@@ -1,5 +1,3 @@
-import { useReducer } from "react";
-
 export const initialState = [
   {
     item: "Learn about reducers",
@@ -21,11 +19,28 @@ export const initialState = [
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_TODO":
-      return {
+      return [
         ...state,
-        todos: state.todos.map()
-      };
-      default: 
+        {
+          item: action.payload,
+          completed: false,
+          id: Date.now()
+        }
+      ];
+    case "TOGGLE_COMPLETE":
+      return state.map(todo => {
+        // console.log("This is todo in reducers: ", todo);
+        if (todo.id === action.payload) {
+          return { ...todo, completed: !todo.completed };
+        } else {
+          return todo;
+        }
+      });
+      case "CLEAR_COMPLETED":
+          return (
+              state.filter(todo => !todo.completed)
+          )
+    default:
       return state;
   }
 };
