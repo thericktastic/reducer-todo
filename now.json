@@ -1,9 +1,9 @@
 {
     "version": 2,
-    "name": "project",
+    "name": "assignment",
     "builds": [
         {
-            "src": "project/package.json",
+            "src": "assignment/package.json",
             "use": "@now/static-build",
             "config": {
                 "distDir": "build"
@@ -13,7 +13,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "project/$1"
+            "dest": "assignment/$1"
         }
     ]
 }
